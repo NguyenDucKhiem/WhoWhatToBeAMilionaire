@@ -10,7 +10,9 @@
 
 //
 #define MAX_USER 10000
-#define MAX_PLAYER 50000
+#define MAX_CLIENT_WATTING 50000
+#define MAX_CLIENT_PLAYING 10
+#define MAX_THREAD 500
 
 //step game
 #define STEP_CONNECT 0
