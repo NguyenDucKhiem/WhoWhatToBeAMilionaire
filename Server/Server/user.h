@@ -12,6 +12,8 @@ struct Users
 	int isLogin;
 };
 
+Users *listUsers[MAX_USER];
+
 /*
 [IN] userID
 [IN] password
