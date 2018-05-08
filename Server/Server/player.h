@@ -2,6 +2,7 @@
 #include "user.h"
 #include <WinSock2.h>
 #include <WS2tcpip.h>
+#include <process.h>
 #pragma comment(lib, "Ws2_32.lib")
 
 // Define States
@@ -21,6 +22,8 @@ typedef struct Players
 	int orderquestion;		//câu hỏi 1,2,… (nếu flag == người chơi)
 };
 
+
+
 /*
 [IN] userID
 [IN] clientAddr
@@ -30,12 +33,15 @@ init State and return it
 */
 Players *InitPlayer(SOCKET client) {
 	Players *player = (Players*)malloc(sizeof(Players));
+
 	player->client = client;
+	ZeroMemory(&(player->overlap), sizeof(WSAOVERLAPPED));
+
 	player->operation = RECV;
 	player->orderquestion = -1;
 	player->recvByte = 0;
 	player->sendByte = 0;
-	/*player->dataBuff = 0;*/
+	player->dataBuff.buf = player->buff;
 	player->helpCall = 15;
 	player->flag = STEP_CONNECT;
 	player->orderquestion = 0;
