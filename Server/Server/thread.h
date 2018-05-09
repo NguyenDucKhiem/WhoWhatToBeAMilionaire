@@ -5,12 +5,12 @@
 #include "message.h"
 
 //
-Players *clientWatting[MAX_CLIENT_WATTING];
-WSAEVENT eventsWatting[MAX_CLIENT_WATTING];
+Players *clientWaitting[MAX_CLIENT_WAITTING];
+WSAEVENT eventsWaitting[MAX_CLIENT_WAITTING];
+int nWaitting = 0;
 
 Players *clientPlaying[MAX_CLIENT_PLAYING];
 WSAEVENT eventsPlaying[MAX_CLIENT_PLAYING];
-int nWatting = 0;
 int nPlaying = 0;
 
 //Stuct contain information of each thread
@@ -25,3 +25,8 @@ typedef struct ThreadInfo {
 ThreadInfo threads[MAX_THREAD];
 HANDLE threadHandle[MAX_THREAD];
 int nThread;
+
+CRITICAL_SECTION threadCrt;
+CRITICAL_SECTION userCrt;
+CRITICAL_SECTION playCrt;
+CRITICAL_SECTION waitCrt;
