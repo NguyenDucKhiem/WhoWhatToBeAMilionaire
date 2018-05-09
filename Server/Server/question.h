@@ -2,7 +2,7 @@
 #include "constant.h"
 
 typedef struct DataQuestions {
-	char question[MAX_QUES_LENGTH];		// cÃ¢u há»i cÃ³ chá»‰ cÃ³ cÃ¡c Ä‘Ã¡p Ã¡n \t (cÃ¢u há»i ngáº¯n < 512)
+	char question[MAX_QUES_LENGTH];		// 
 	char choose[4][MAX_ANS_LENGTH];		// 128
 	
 } DataQuestions;
