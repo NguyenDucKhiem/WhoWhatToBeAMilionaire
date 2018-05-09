@@ -86,3 +86,5 @@ int ReadQuesFromFile(char * nameFile, Questions **listQues, int maxNumberQues) {
 
 	return i;
 }
+
+
