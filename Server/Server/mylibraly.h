@@ -3,14 +3,7 @@
 #include <conio.h>
 #include <math.h>
 #include <WS2tcpip.h>
-#include "player.h"
-#include "question.h"
-
-FILE *file;
-Users **listUsers;
-int nUsers = 0, nPlayer = 0;
-Players **listStates;
-sockaddr_in clientAddr;
+#include "constant.h"
 
 // Inittiate WinSock
 // if successful return 0, otherwrise it return error code
