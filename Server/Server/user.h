@@ -1,16 +1,19 @@
-﻿#include <stdio.h>
+﻿#pragma once
+
+#include <string.h>
 #include <stdlib.h>
-#include <string>
+#include <conio.h>
+#include <stdio.h>
 #include "constant.h"
 
 // Define User
-struct Users
+typedef struct Users
 {
 	char userID[SIZE_USERID];
 	char password[SIZE_PASSWORD];
 	int statusAccount;
 	int isLogin;
-};
+} Users;
 
 Users *listUsers[MAX_USER];
 

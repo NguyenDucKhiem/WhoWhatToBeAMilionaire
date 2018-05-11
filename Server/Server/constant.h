@@ -1,4 +1,5 @@
 ﻿#pragma once
+#include <process.h>
 
 // Users
 #define SIZE_USERID 20
@@ -17,8 +18,7 @@
 #define MAX_THREAD 500
 #define MAX_USER 10000
 #define MAX_CLIENT_PLAYING 10
-#define MAX_CLIENT_WAITTING (MAX_THREAD * WSA_MAXIMUM_WAIT_EVENTS - MAX_CLIENT_PLAYING)
-
+#define MAX_CLIENT_WAITTING (MAX_THREAD * WSA_MAXIMUM_WAIT_EVENTS)
 
 //step game
 #define STEP_CONNECT 0
@@ -90,3 +90,5 @@
 //player operation
 #define RECV 1
 #define SEND 1
+
+

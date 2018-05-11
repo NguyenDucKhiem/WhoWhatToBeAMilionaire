@@ -97,15 +97,15 @@ check messenge
 [IN] mess
 return type of messenge
 */
-int CheckMess(char *mess) {
-	if (strstr(mess, "PLAY") == mess)
-		return LOGIN;
-	if (strstr(mess, "LOUT") == mess)
-		return LOGOUT;
-	if (strstr(mess, "ENDG") == mess)
-		return END_GAME;
-	if (strstr(mess, "ENDS") == mess)
-		return END_SERVER;
-	return ERROR;
-}
+//int CheckMess(char *mess) {
+//	if (strstr(mess, "PLAY") == mess)
+//		return LOGIN;
+//	if (strstr(mess, "LOUT") == mess)
+//		return LOGOUT;
+//	if (strstr(mess, "ENDG") == mess)
+//		return END_GAME;
+//	if (strstr(mess, "ENDS") == mess)
+//		return END_SERVER;
+//	return ERROR;
+//}
 

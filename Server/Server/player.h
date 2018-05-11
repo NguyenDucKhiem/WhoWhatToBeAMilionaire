@@ -84,4 +84,3 @@ int DeletePlayer(Players **listPlayer, int index, int *countPlayer) {
 	(*countPlayer)--;
 	return 0;
 }
-
