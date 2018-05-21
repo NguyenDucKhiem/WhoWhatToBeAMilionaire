@@ -1,15 +1,12 @@
 ﻿#pragma once
 
-#include "message.h"
-#include "player.h"
-#include "mylibraly.h"
+
+#include "waitting.h"
 
 //
-Players *playersWaitting[MAX_CLIENT_WAITTING];
-WSAEVENT eventsWaitting[MAX_CLIENT_WAITTING];
 
-Players *playersPlaying[MAX_CLIENT_PLAYING];
-WSAEVENT eventsPlaying[MAX_CLIENT_PLAYING];
+
+
 
 //Stuct contain information of each thread
 //có 2 biến 1 biến ThreadWaitting ThreadPlaying
@@ -83,41 +80,47 @@ unsigned __stdcall WaittingThread(LPVOID parma) {
 					//Define index of  client in the section array
 					idxSect = i + idx + pThInfo->indexOfThread * WSA_MAXIMUM_WAIT_EVENTS;
 
-					WSAGetOverlappedResult(playersWaitting[idxSect]->sock, &sections[idxSect]->overlap, &transByte, FALSE, &flags);
+					WSAGetOverlappedResult(playersWaitting[idxSect]->client, &playersWaitting[idxSect]->overlap, &transByte, FALSE, &flags);
 
 					if (transByte == 0) {
 						//
-						closeSectionEx(i + idx, pThInfo);
+						DeletePlayerInThread(pThInfo, i + idx);
 						continue;
 					}
 					else {
 						//Tranfer success
-						if (sections[idxSect]->operation == RECV) {
+						if (playersWaitting[idxSect]->operation == RECV) {
 							//Process msg from client
-							sections[idxSect]->buff[transByte] = '\0';
-							processRecvMsg(idxSect, sections[idxSect]->buff, BUFF_SIZE, &sections[idxSect]->sendByte);
+							playersWaitting[idxSect]->buff[transByte] = '\0';
+
+							//action watting
+							//processRecvMsg(idxSect, playersWaitting[idxSect]->buff, BUFF_SIZE, &playersWaitting[idxSect]->sendByte);
+
 							//Send msg to client, usse WSASend()
-							sections[idxSect]->operation = SEND;
-							ResetEvent(events[idxSect]);
-							if (WSASend(sections[idxSect]->sock, &sections[idxSect]->dataBuff, 1, &sections[idxSect]->sendByte,
-								flags, &sections[idxSect]->overlap, NULL) == SOCKET_ERROR) {
+							playersWaitting[idxSect]->operation = SEND;
+							ResetEvent(eventsWaitting[idxSect]);
+							if (WSASend(playersWaitting[idxSect]->client, &playersWaitting[idxSect]->dataBuff, 1, &playersWaitting[idxSect]->sendByte,
+								flags, &playersWaitting[idxSect]->overlap, NULL) == SOCKET_ERROR) {
 								if (WSAGetLastError() != WSA_IO_PENDING) {
 									//Hve error in transfer
-									closeSectionEx(i + idx, pThInfo);
+									DeletePlayerInThread(pThInfo, i + idx);
 									continue;
 								}
 							}
+
+							//
 						}
 						else {
 							//Send 1 byte msg success request to receive msg from client
-							resetSection(idxSect);
+							// reset thì các giá trị về 0 -> WSA lỗi ??
+							//resetSection(idxSect);
 							flags = 0;
 							//Post Recv request
-							if (WSARecv(sections[idxSect]->sock, &sections[idxSect]->dataBuff, 1, &transByte, &flags, &sections[idxSect]->overlap, NULL) == SOCKET_ERROR) {
+							if (WSARecv(playersWaitting[idxSect]->client, &playersWaitting[idxSect]->dataBuff, 1, &transByte, &flags, &playersWaitting[idxSect]->overlap, NULL) == SOCKET_ERROR) {
 								if (WSAGetLastError() != WSA_IO_PENDING) {
 									//Have error in the socket index
 									printf("WSARecv() failed with error %d\n", WSAGetLastError());
-									closeSectionEx(i + idx, pThInfo);
+									DeletePlayerInThread(pThInfo, i + idx);
 								}
 							}
 						}

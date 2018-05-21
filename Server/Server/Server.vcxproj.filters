@@ -13,6 +13,21 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\thread">
+      <UniqueIdentifier>{101f797c-5e8a-4cc4-a767-92614abfe44b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\constant">
+      <UniqueIdentifier>{5d059384-fb61-46e1-9f55-4649fe532def}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\player">
+      <UniqueIdentifier>{3cddcc1c-a1d7-4c5f-aa76-5b2c4eeacf69}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\socket">
+      <UniqueIdentifier>{050bbdf7-3b06-4f01-a815-7d558f99148a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\message">
+      <UniqueIdentifier>{7049d9c2-2ef8-4510-8e0a-5035e910fb1e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -21,26 +36,35 @@
     <ClInclude Include="targetver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="thread.h">
+      <Filter>Header Files\thread</Filter>
+    </ClInclude>
+    <ClInclude Include="waitting.h">
+      <Filter>Header Files\thread</Filter>
+    </ClInclude>
     <ClInclude Include="constant.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="message.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="mylibraly.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="player.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="question.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\constant</Filter>
     </ClInclude>
     <ClInclude Include="user.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\player</Filter>
     </ClInclude>
-    <ClInclude Include="thread.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="player.h">
+      <Filter>Header Files\player</Filter>
+    </ClInclude>
+    <ClInclude Include="mylibraly.h">
+      <Filter>Header Files\socket</Filter>
+    </ClInclude>
+    <ClInclude Include="message.h">
+      <Filter>Header Files\message</Filter>
+    </ClInclude>
+    <ClInclude Include="question.h">
+      <Filter>Header Files\message</Filter>
+    </ClInclude>
+    <ClInclude Include="enum.h">
+      <Filter>Header Files\constant</Filter>
+    </ClInclude>
+    <ClInclude Include="playing.h">
+      <Filter>Header Files\thread</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
