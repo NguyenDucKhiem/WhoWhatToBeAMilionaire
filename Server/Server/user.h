@@ -78,10 +78,13 @@ void WriteUserInFile(FILE *file, Users **listUser, int numberUsers) {
 Read file, save in listUser and return reading numver Users
 */
 
-Users *FindUser(Users **listUsers, int numberUsers, char *userID) {
+Users *FindUser(Users **listUsers, int numberUsers, char data[]) {
+	char name[SIZE_USERID], pass[SIZE_PASSWORD];
+	if (sscanf_s(data, "%s%s", name, pass) != 2)
+		return NULL;
 	for (int i = 0; i < numberUsers; i++) {
 		if (listUsers[i] == NULL) return NULL;
-		if (strcmp(listUsers[i]->userID, userID) == 0)
+		if (strcmp(listUsers[i]->userID, name) == 0 && strcmp(listUsers[i]->password, pass))
 			return listUsers[i];
 	}
 	return NULL;

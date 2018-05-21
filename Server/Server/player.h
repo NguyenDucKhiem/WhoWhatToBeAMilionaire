@@ -15,10 +15,11 @@ typedef struct Players
 	char buff[BUFF_SIZE];
 	WSABUF dataBuff;
 	int operation;			// trạng thái SEND hoặc RECV
-	Users userPlayer;
+	Users *userPlayer;
 	int indexInListAcc;		// vị trí user trong mảng tài khoản
 	int helpCall;
-	int flag;				//đang ở bước nào người chơi phụ hay người chơi chính
+	int typePlayer;
+	int step;				//đang ở bước nào người chơi phụ hay người chơi chính
 	int orderquestion;		//câu hỏi 1,2,… (nếu flag == người chơi)
 };
 
@@ -39,11 +40,13 @@ Players *InitPlayer(SOCKET client) {
 
 	player->operation = RECV;
 	player->orderquestion = -1;
+	player->userPlayer = NULL;
 	player->recvByte = 0;
 	player->sendByte = 0;
 	player->dataBuff.buf = player->buff;
 	player->helpCall = 15;
-	player->flag = STEP_CONNECT;
+	player->typePlayer = TYPE_PLAYER_WAITTING;
+	player->step = STEP_CONNECT;
 	player->orderquestion = 0;
 	return player;
 }

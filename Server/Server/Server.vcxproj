@@ -148,14 +148,17 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="constant.h" />
+    <ClInclude Include="enum.h" />
     <ClInclude Include="message.h" />
     <ClInclude Include="mylibraly.h" />
     <ClInclude Include="player.h" />
+    <ClInclude Include="playing.h" />
     <ClInclude Include="question.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="thread.h" />
     <ClInclude Include="user.h" />
+    <ClInclude Include="waitting.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Server.cpp" />
