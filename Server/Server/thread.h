@@ -3,11 +3,6 @@
 
 #include "waitting.h"
 
-//
-
-
-
-
 //Stuct contain information of each thread
 //có 2 biến 1 biến ThreadWaitting ThreadPlaying
 typedef struct ThreadInfo {
@@ -91,10 +86,11 @@ unsigned __stdcall WaittingThread(LPVOID parma) {
 						//Tranfer success
 						if (playersWaitting[idxSect]->operation == RECV) {
 							//Process msg from client
-							playersWaitting[idxSect]->buff[transByte] = '\0';
 
 							//action watting
 							//processRecvMsg(idxSect, playersWaitting[idxSect]->buff, BUFF_SIZE, &playersWaitting[idxSect]->sendByte);
+							if (playersWaitting[idxSect]->isSend == 1)
+								ProcessingWaitting(idxSect, (Messages*)playersWaitting[idxSect]->buff);
 
 							//Send msg to client, usse WSASend()
 							playersWaitting[idxSect]->operation = SEND;
@@ -102,13 +98,14 @@ unsigned __stdcall WaittingThread(LPVOID parma) {
 							if (WSASend(playersWaitting[idxSect]->client, &playersWaitting[idxSect]->dataBuff, 1, &playersWaitting[idxSect]->sendByte,
 								flags, &playersWaitting[idxSect]->overlap, NULL) == SOCKET_ERROR) {
 								if (WSAGetLastError() != WSA_IO_PENDING) {
-									//Hve error in transfer
+									////Hve error in transfer
 									DeletePlayerInThread(pThInfo, i + idx);
-									continue;
 								}
+								playersWaitting[idxSect]->isSend = 0;
 							}
-
-							//
+							else {
+								playersWaitting[idxSect]->isSend = 1;
+							}
 						}
 						else {
 							//Send 1 byte msg success request to receive msg from client
@@ -116,12 +113,17 @@ unsigned __stdcall WaittingThread(LPVOID parma) {
 							//resetSection(idxSect);
 							flags = 0;
 							//Post Recv request
+			
 							if (WSARecv(playersWaitting[idxSect]->client, &playersWaitting[idxSect]->dataBuff, 1, &transByte, &flags, &playersWaitting[idxSect]->overlap, NULL) == SOCKET_ERROR) {
 								if (WSAGetLastError() != WSA_IO_PENDING) {
 									//Have error in the socket index
 									printf("WSARecv() failed with error %d\n", WSAGetLastError());
 									DeletePlayerInThread(pThInfo, i + idx);
 								}
+								continue;
+							}
+							else {
+								playersWaitting[idxSect]->operation = RECV;
 							}
 						}
 					}

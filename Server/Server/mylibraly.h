@@ -5,6 +5,8 @@
 #include <WS2tcpip.h>
 #include "constant.h"
 
+#pragma comment(lib, "Ws2_32.lib")
+
 // Inittiate WinSock
 // if successful return 0, otherwrise it return error code
 int InitWinSock()
@@ -91,21 +93,3 @@ int ReceiveMess(SOCKET connSock, char *buff, int size, int visible) {
 		return 0;
 	}
 }
-
-/*
-check messenge
-[IN] mess
-return type of messenge
-*/
-//int CheckMess(char *mess) {
-//	if (strstr(mess, "PLAY") == mess)
-//		return LOGIN;
-//	if (strstr(mess, "LOUT") == mess)
-//		return LOGOUT;
-//	if (strstr(mess, "ENDG") == mess)
-//		return END_GAME;
-//	if (strstr(mess, "ENDS") == mess)
-//		return END_SERVER;
-//	return ERROR;
-//}
-

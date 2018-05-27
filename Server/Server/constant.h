@@ -33,8 +33,6 @@
 #define STEP_HELP 9
 #define STEP_END_GAME 10
 
-#define BUFF_SIZE 2048
-
 #define SERVER_PORT 5500
 #define SERVER_ADDR "127.0.0.1"
 

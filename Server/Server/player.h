@@ -3,6 +3,7 @@
 #include <WinSock2.h>
 #include <WS2tcpip.h>
 #include <process.h>
+
 #pragma comment(lib, "Ws2_32.lib")
 
 // Define States
@@ -15,12 +16,14 @@ typedef struct Players
 	char buff[BUFF_SIZE];
 	WSABUF dataBuff;
 	int operation;			// trạng thái SEND hoặc RECV
+
 	Users *userPlayer;
 	int indexInListAcc;		// vị trí user trong mảng tài khoản
 	int helpCall;
 	int typePlayer;
 	int step;				//đang ở bước nào người chơi phụ hay người chơi chính
 	int orderquestion;		//câu hỏi 1,2,… (nếu flag == người chơi)
+	int isSend;				//gói tin đã được gửi hay chưa
 };
 
 
@@ -48,6 +51,7 @@ Players *InitPlayer(SOCKET client) {
 	player->typePlayer = TYPE_PLAYER_WAITTING;
 	player->step = STEP_CONNECT;
 	player->orderquestion = 0;
+	player->isSend = 1;
 	return player;
 }
 

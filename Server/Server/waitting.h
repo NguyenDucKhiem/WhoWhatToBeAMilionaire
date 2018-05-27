@@ -3,6 +3,7 @@
 #include "mylibraly.h"
 #include "message.h"
 #include "player.h"
+#include "playing.h"
 
 Players *playersWaitting[MAX_CLIENT_WAITTING];
 WSAEVENT eventsWaitting[MAX_CLIENT_WAITTING];
@@ -37,7 +38,6 @@ int ProcessingWaitting(int index, Messages *mess) {
 				//tiếp tục
 				return 1;
 			}
-;
 
 			if (user->statusAccount != USER_ACTIVE) {
 				SetMessage(mess, MSG_SERVER_REPLY_LOGIN, "-2", (char*) "User is Block.");
