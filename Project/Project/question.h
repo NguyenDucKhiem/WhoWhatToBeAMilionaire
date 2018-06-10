@@ -11,8 +11,8 @@ typedef struct DataQuestions {
 } DataQuestions;
 
 typedef struct Questions {
-	char answer;
-	DataQuestions *data;
+	int answer;
+	DataQuestions data;
 } Questions; 
 
 /*
@@ -29,11 +29,11 @@ init question , return a point to it
 Questions *InitQuestion(char *question, char *choose1, char *choose2, char *choose3, char *choose4, int answer) {
 	Questions *pQuestion = (Questions*) malloc (sizeof(Questions));
 
-	strcpy(pQuestion->data->question, question);
-	strcpy(pQuestion->data->choose[0], choose1);
-	strcpy(pQuestion->data->choose[1], choose2);
-	strcpy(pQuestion->data->choose[2], choose3);
-	strcpy(pQuestion->data->choose[3], choose4);
+	strcpy(pQuestion->data.question, question);
+	strcpy(pQuestion->data.choose[0], choose1);
+	strcpy(pQuestion->data.choose[1], choose2);
+	strcpy(pQuestion->data.choose[2], choose3);
+	strcpy(pQuestion->data.choose[3], choose4);
 	pQuestion->answer = answer;
 
 	return pQuestion;

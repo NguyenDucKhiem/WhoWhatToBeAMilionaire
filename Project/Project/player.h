@@ -13,6 +13,7 @@ typedef struct
 	SOCKET client;
 	DWORD recvByte;
 	DWORD sendByte;
+	DWORD transferredBytes;
 	char buff[BUFF_SIZE];
 	WSABUF dataBuff;
 	int operation;			// trạng thái SEND hoặc RECV
@@ -46,10 +47,12 @@ Players *InitPlayer(SOCKET client) {
 	player->userPlayer = NULL;
 	player->recvByte = 0;
 	player->sendByte = 0;
+	player->transferredBytes = 1;
 	player->dataBuff.buf = player->buff;
+	player->dataBuff.len = strlen(player->buff);
 	player->helpCall = 15;
 	player->typePlayer = TYPE_PLAYER_WAITTING;
-	player->step = STEP_CONNECT;
+	player->step = STEP_GAME::LOGIN;
 	player->orderquestion = 0;
 	player->isSend = 1;
 	return player;
@@ -80,14 +83,19 @@ void FreePlayer(Players *player) {
 /*
 Delete User and diminished user
 
-[IN / OUT] lissUsers
-[IN / OUT] numberUsers
-[IN] userID which is delete
+[IN/OUT] lissUsers
+[IN] index
+[IN/OUT] countPlayer
 */
 
 int DeletePlayer(Players **listPlayer, int index, int *countPlayer) {
 	FreePlayer(listPlayer[index]);
-	listPlayer[index] = listPlayer[(*countPlayer) - 1];
-	(*countPlayer)--;
+	if (countPlayer != NULL) {
+		listPlayer[index] = listPlayer[(*countPlayer) - 1];
+		(*countPlayer)--;
+	}
+	
 	return 0;
 }
+
+

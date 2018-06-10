@@ -1,0 +1,4 @@
+﻿  ClientGUI.cpp
+d:\study\lập trình mạng\baitap\whowhattobeamilionaire\project\clientgui\clientgui.cpp(152): warning C4101: 'connSock': unreferenced local variable
+d:\study\lập trình mạng\baitap\whowhattobeamilionaire\project\clientgui\clientgui.cpp(154): warning C4101: 'ret': unreferenced local variable
+  ClientGUI.vcxproj -> D:\Study\Lập trình mạng\BaiTap\WhoWhatToBeAMilionaire\Project\Debug\ClientGUI.exe

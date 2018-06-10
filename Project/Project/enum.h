@@ -33,10 +33,14 @@ enum TYPE_MSG
 
 enum STEP_GAME
 {
+	CONNECT,    //in client
 	LOGIN,
-	WAIT,
+	WAIT,			//is login, wait start game	
+	WAIT_PLAY,		//wait enough player
 	QUESTION_BEGIN,
-	PLAY,						
-	STREAM,
+	RESULT_BEGIN,
+	QUESTION,
+	RESULT,
+	STREAM,			//player sub is watch player main phay game
 	HELP
 };

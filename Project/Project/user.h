@@ -45,12 +45,12 @@ Read file, save in listUser and return reading numver Users
 */
 
 int ReadUserFromFile(FILE *file, Users **listUser, int maxUser) {
-	char userID[SIZE_USERID];
-	char password[SIZE_PASSWORD];
-	int statusAccount;
 	int i = 0;
 
 	while (feof(file) == 0 && i < maxUser) {
+		char userID[SIZE_USERID];
+		char password[SIZE_PASSWORD];
+		int statusAccount;
 		if (fscanf(file, "%s %s %d", userID, password, &statusAccount)) {
 			listUser[i] = InitUser(userID, password, statusAccount);
 			i++;

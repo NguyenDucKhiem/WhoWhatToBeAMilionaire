@@ -1,3 +1,9 @@
 ﻿  Project.cpp
-d:\study\lập trình mạng\baitap\whowhattobeamilionaire\project\project\playing.h(49): warning C4715: 'ProcessingPlayingMain': not all control paths return a value
+d:\study\lập trình mạng\baitap\whowhattobeamilionaire\project\project\playing.h(86): warning C4101: 'sendBytes': unreferenced local variable
+d:\study\lập trình mạng\baitap\whowhattobeamilionaire\project\project\playing.h(86): warning C4101: 'recvBytes': unreferenced local variable
+d:\study\lập trình mạng\baitap\whowhattobeamilionaire\project\project\project.cpp(86): warning C4101: 'index': unreferenced local variable
+d:\study\lập trình mạng\baitap\whowhattobeamilionaire\project\project\playing.h(59): warning C4715: 'ProcessingPlayingMain': not all control paths return a value
+d:\study\lập trình mạng\baitap\whowhattobeamilionaire\project\project\playing.h(83): warning C4715: 'ProcessingPlayingSub': not all control paths return a value
+d:\study\lập trình mạng\baitap\whowhattobeamilionaire\project\project\playing.h(130): warning C4715: 'SendAllPlayer': not all control paths return a value
+d:\study\lập trình mạng\baitap\whowhattobeamilionaire\project\project\playing.h(177): warning C4715: 'ProcessingPlayingMain': not all control paths return a value
   Project.vcxproj -> D:\Study\Lập trình mạng\BaiTap\WhoWhatToBeAMilionaire\Project\Debug\Project.exe
